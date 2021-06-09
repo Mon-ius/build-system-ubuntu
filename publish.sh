@@ -1,5 +1,5 @@
 docker logout && docker login
-docker build -t build-system-ubuntu:base .
+docker build -t build-system-ubuntu:base ./base || docker build -t build-system-ubuntu:base .
 docker tag build-system-ubuntu:base monius/build-system-ubuntu:base
 docker push build-system-ubuntu:base
 
