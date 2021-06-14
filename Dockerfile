@@ -1,6 +1,9 @@
-FROM monius/build-system-ubuntu:base
+FROM monius/build-system-ubuntu:advanced
 
-ARG USER=monius
-RUN useradd -ms /bin/bash $USER
-USER $USER
-WORKDIR /home/$USER
+RUN export DEBIAN_FRONTEND=noninteractive \
+  && sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
+  && sudo apt-get update \ 
+  && sudo apt-get install $(curl -fsSL git.io/bbr-v2alpha-ubuntu-hirsute) -y \
+  && sudo apt-get -qq build-dep linux -y \
+  && sudo apt-get -qq autoremove --purge \
+  && sudo apt-get -qq clean
