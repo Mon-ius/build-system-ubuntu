@@ -5,9 +5,11 @@ ENV NETWORK=''
 ENV PUBLIC_KEY=''
 
 RUN export DEBIAN_FRONTEND=noninteractive \
-  && apt-get update \ 
-  && apt-get install -y curl sudo apt-utils net-tools openssh-server \
-  && apt-get upgrade -y
+  && apt-get update --allow-unauthenticated \ 
+  && apt-get install -y apt-utils gnupg curl sudo  net-tools openssh-server \
+  && apt-get upgrade -y \
+  && apt-get -qq autoremove --purge \
+  && apt-get -qq clean
 
 RUN useradd -rm -d /home/$USER -s /bin/bash -g root -G sudo -u 1000 $USER 
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers

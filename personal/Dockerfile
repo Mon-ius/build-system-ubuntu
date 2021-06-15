@@ -7,7 +7,7 @@ ENV PUBLIC_KEY=''
 RUN export DEBIAN_FRONTEND=noninteractive \
   && sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
   && apt-get update \ 
-  && apt-get install -y curl \
+  && apt-get install -y apt-utils gnupg curl \
   && apt-get install $(curl -fsSL git.io/bbr-v2alpha-ubuntu-hirsute) -y \
   && apt-get -qq build-dep linux -y \
   && apt-get upgrade -y \
