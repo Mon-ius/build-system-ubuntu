@@ -6,11 +6,11 @@ This docker image aims at providing a utilized development environment out of th
 
 ### Usage
 
-There are three different types of container with tags: `base`, `advanced`, `lastest`:
+There are three different types of container with tags: `base`, `advanced`, `latest`:
 
 - `base` only contains very basic setup, so that you can modify a lot based on it.
-- `advanced` contains ssh, zerotier network entrance and updated software, you can quickly start by specify `$USER` and `$NETWORK` ENV variables.
-- `lastest` contains all features in `advanced`, besides, it has large pre-installed software and tools, such as `ZSH` and zsh plugins.
+- `advanced` contains ssh, zero-tier network entrance and updated software, you can quickly start by specify `$USER` and `$NETWORK` ENV variables.
+- `latest` contains all features in `advanced`, besides, it has large pre-installed software and tools, such as `ZSH` and zsh plugins.
 
 #### Docker cli
 
@@ -32,7 +32,7 @@ docker run \
 
 #### Docker-compose
 
-`docker-compose.yml` could replace some `args` in a file to run a container. See [docker-compose.yml](https://github.com/Mon-ius/build-system-ubuntu/blob/master/personal/Dockerfile). Put essential environment varaibles in `.env`, then:
+`docker-compose.yaml` could replace some `args` in a file to run a container. See [docker-compose.yaml](https://github.com/Mon-ius/build-system-ubuntu/blob/master/personal/Dockerfile). Put essential environment variables in `.env`, then:
 
 ```bash
 #start
@@ -43,7 +43,7 @@ docker-compose down
 
 It's easy to build your own container with `ARG` such as default login USER, etc:
 
-See [Dockerfile](https://github.com/Mon-ius/build-system-ubuntu/blob/master/personal/Dockerfile) and [Entrypoint](https://github.com/Mon-ius/build-system-ubuntu/blob/master/personal/entrypoint.sh). For example :
+See [Docker-file](https://github.com/Mon-ius/build-system-ubuntu/blob/master/personal/Dockerfile) and [Entry-point](https://github.com/Mon-ius/build-system-ubuntu/blob/master/personal/entrypoint.sh). For example :
 
 ```bash
 docker build -t build-personal \
