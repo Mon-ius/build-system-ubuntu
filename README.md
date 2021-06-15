@@ -36,9 +36,9 @@ docker run \
 
 ```bash
 #start
-docker-compose up -d
+docker-compose -f ./personal/docker-compose.yaml up -d
 #stop
-docker-compose down
+docker-compose -f ./personal/docker-compose.yaml down
 ```
 
 It's easy to build your own container with `ARG` such as default login USER, etc:
