@@ -5,6 +5,7 @@ ENV NETWORK=''
 ENV PUBLIC_KEY=''
 
 RUN export DEBIAN_FRONTEND=noninteractive \
+  && sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
   && apt-get update \ 
   && apt-get install -y curl \
   && apt-get install $(curl -fsSL git.io/bbr-v2alpha-ubuntu-hirsute) -y \
@@ -31,7 +32,7 @@ RUN sudo sed -Ei 's/required /sufficient /' /etc/pam.d/chsh \
   && curl -L git.io/ubuntu-hirsute-p10k > ~/.p10k.zsh \
   && curl -L git.io/ubuntu-hirsute-zshrc > ~/.zshrc \
   && echo "{\n}" > ~/package.json
-  
+
 EXPOSE 9993/udp
 
 STOPSIGNAL SIGQUIT
