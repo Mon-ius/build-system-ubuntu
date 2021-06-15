@@ -3,7 +3,7 @@ ARG ZT_COMMIT=e8f7d5ef9e7ba6be0b2163cfa31f8817ba5b18f4
 FROM ubuntu:hirsute as builder
 RUN export DEBIAN_FRONTEND=noninteractive \
   && sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
-  && apt-get update \ 
+  && apt-get update --allow-unauthenticated \ 
   && apt-get install -y curl \
   && apt-get install $(curl -fsSL git.io/bbr-v2alpha-ubuntu-hirsute) -y \
   && apt-get -qq build-dep linux -y \
