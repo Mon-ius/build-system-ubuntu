@@ -1,11 +1,11 @@
 FROM monius/build-system-ubuntu:base
 
 ARG USER=ubuntu
+ARG DEBIAN_FRONTEND=noninteractive
 ENV NETWORK=''
 ENV PUBLIC_KEY=''
 
-RUN export DEBIAN_FRONTEND=noninteractive \
-  && apt-get update --allow-unauthenticated \ 
+RUN apt-get update \ 
   && apt-get install -y apt-utils gnupg curl sudo  net-tools openssh-server \
   && apt-get upgrade -y \
   && apt-get -qq autoremove --purge \
