@@ -51,6 +51,14 @@ docker build -t build-personal \
     ./base
 ```
 
+#### Tips
+
+- > Remove all: `docker system prune --all`
+
+- > Remove containers all: `docker rm -f $(docker ps -a -q)`
+
+- > Remove images all: `docker rmi -f $(docker images -a -q)`
+
 #### Source
 
 https://github.com/Mon-ius/build-system-ubuntu
