@@ -29,7 +29,9 @@ RUN sudo sed -Ei 's/required /sufficient /' /etc/pam.d/chsh \
   && curl -L git.io/antibody | sudo sh -s - -b /usr/local/bin \
   && curl -L git.io/ubuntu-hirsute-p10k > ~/.p10k.zsh \
   && curl -L git.io/ubuntu-hirsute-zshrc > ~/.zshrc \
-  && curl -L git.io/ubuntu-hirsute-antibody > ~/.zsh_plugins.txt \
+  && curl -L git.io/ubuntu-hirsute-antibody > ~/.bundles.txt \
+  && antibody bundle < ~/.bundles.txt > ~/.zsh_plugins.sh \
+  && antibody update \
   && chsh -s /bin/zsh 
 
 EXPOSE 9993/udp
