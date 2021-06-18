@@ -4,11 +4,10 @@ ARG USER=ubuntu
 ENV NETWORK=''
 ENV PUBLIC_KEY=''
 
-RUN apt-get update \ 
-  && apt-get install -y apt-utils curl sudo net-tools openssh-server \
+RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
+  && apt-get update \ 
   && apt-get dist-upgrade -y \
-  && apt-get -qq autoremove --purge \
-  && apt-get -qq clean
+  && apt-get install -y curl sudo net-tools openssh-server
 
 RUN useradd -rm -d /home/$USER -s /bin/bash -g root -G sudo -u 1000 $USER
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
