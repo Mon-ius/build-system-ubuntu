@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
-    [ -d /tmp ] || sudo mkdir /tmp && sudo chmod -R 1777 /tmp
+if [ ! -d /tmp ]; then
+    sudo mkdir /tmp 
+    sudo chmod -R 1777 /tmp
+fi
     mkdir ~/.ssh && echo $PUBLIC_KEY >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
     sudo zerotier-one -d && sleep 1
 if [ -z $NETWORK ]; then
