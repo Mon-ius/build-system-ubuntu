@@ -1,6 +1,6 @@
 {
 	"name": "Build system",
-	"dockerFile": "monius/build-system-ubuntu:personal",
+	"dockerFile": "Dockerfile",
 	"shutdownAction":"none",
 	"postAttachCommand": ". /run/entrypoint.sh",
 	"remoteUser": "monius",
