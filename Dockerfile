@@ -10,9 +10,10 @@ RUN sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
 
 RUN sudo sed -Ei 's/required /sufficient /' /etc/pam.d/chsh \
   && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-  && curl -L git.io/antigen > ~/.antigen.zsh \ 
-  && curl -L git.io/ubuntu-hirsute-antigenrc > ~/.antigenrc \
+  && curl -L git.io/antibody | sudo sh -s - -b /usr/local/bin \
   && curl -L git.io/ubuntu-hirsute-p10k > ~/.p10k.zsh \
   && curl -L git.io/ubuntu-hirsute-zshrc > ~/.zshrc \
-  && echo "{\n}" > ~/package.json \
-  && chsh -s /bin/zsh
+  && curl -L git.io/ubuntu-hirsute-antibody > ~/.bundles.txt \
+  && antibody bundle < ~/.bundles.txt > ~/.zsh_plugins.sh \
+  && antibody update \
+  && chsh -s /bin/zsh 
