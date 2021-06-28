@@ -13,7 +13,7 @@ RUN sudo sed -Ei 's/required /sufficient /' /etc/pam.d/chsh \
   && curl -L git.io/antibody | sudo sh -s - -b /usr/local/bin \
   && curl -L git.io/ubuntu-hirsute-p10k > ~/.p10k.zsh \
   && curl -L git.io/ubuntu-hirsute-zshrc > ~/.zshrc \
-  && curl -L git.io/ubuntu-hirsute-antibody > ~/.bundles.txt \
+  && curl -L git.io/ubuntu-hirsute-antibody | antibody bundle  > ~/.zsh_plugins.sh \
   && antibody bundle < ~/.bundles.txt > ~/.zsh_plugins.sh \
   && antibody update \
   && chsh -s /bin/zsh 
